@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,6 +30,7 @@ namespace MVCCoreProject
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+     
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -41,6 +43,16 @@ namespace MVCCoreProject
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.Use(async (context, next) =>
+            {
+                await context.Response.WriteAsync(" First Middle HelloWorld");
+                await next();
+            });
+            app.Use(async (context, next) =>
+            {
+                await context.Response.WriteAsync(" Second Middle HelloWorld");
+                await next();
+            });
 
             app.UseRouting();
 
