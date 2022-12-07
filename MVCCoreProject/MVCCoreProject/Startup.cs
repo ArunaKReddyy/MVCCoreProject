@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -43,17 +45,22 @@ namespace MVCCoreProject
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.Use(async (context, next) =>
-            {
-                await context.Response.WriteAsync(" First Middle HelloWorld");
-                await next();
-            });
-            app.Use(async (context, next) =>
-            {
-                await context.Response.WriteAsync(" Second Middle HelloWorld");
-                await next();
-            });
+            //app.Use(async (context, next) =>
+            //{
+            //    await context.Response.WriteAsync(" First Middle HelloWorld");
+            //    await next();
+            //});
+            //app.Use(async (context, next) =>
+            //{
+            //    await context.Response.WriteAsync(" Second Middle HelloWorld");
+            //    await next();
+            //});
 
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "MyStaticFiles")),
+                RequestPath = "/MyStaticFiles"
+            });
             app.UseRouting();
 
             app.UseAuthorization();
