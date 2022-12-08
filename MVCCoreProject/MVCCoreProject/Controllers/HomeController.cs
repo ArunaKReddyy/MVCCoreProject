@@ -17,7 +17,10 @@ namespace MVCCoreProject.Controllers
         {
             _logger = logger;
         }
-
+        [ViewData]
+        public string ViewDtaAttributeProperty { get; set; }
+        [ViewData]
+        public BookModel Bookdata { get; set; }
         public IActionResult Index()
         {
             ViewBag.Title = "Aruna";
@@ -34,6 +37,13 @@ namespace MVCCoreProject.Controllers
         {
             ViewData["Title"] = "Aruna";
             ViewData["data"] = new BookModel() { Id = 1, AuthorName = "ArunaKReddy" };
+            return View();
+        }
+
+        public IActionResult AboutUS()
+        {
+            ViewDtaAttributeProperty = "Venkat";
+            Bookdata = new BookModel() { AuthorName = "Venkat Reddy" };
             return View();
         }
 
