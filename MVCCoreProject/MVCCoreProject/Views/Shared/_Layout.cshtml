@@ -11,38 +11,59 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MVCCoreProject</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand" href="#">
+                    <img src="/images/logo.jpeg" width="65" height="38" />
+
+                    Book store
+                </a>
+                <button class="navbar-toggler navbar-toggler-right"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#navbarTogglerDemo02"
+                        aria-controls="navbarTogglerDemo02"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="btn btn-outline-primary">Login</a>
+                            <a class="btn btn-primary">Register</a>
+                        </li>
+                    </ul>
+
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" href="/home/index">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/home/Privacy">About</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/home/Privacy">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" href="/Book/GetAllbooks">All Books</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - MVCCoreProject - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+    <main role="main">
+        @RenderBody()
+    </main>
+    <footer class="border-top footer text-muted text-center">
+        <div class="container">Copyright &copy; Book Store @DateTime.Now.Year</div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
