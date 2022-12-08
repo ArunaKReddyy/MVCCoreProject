@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-
+using System.Dynamic;
 namespace MVCCoreProject.Controllers
 {
     public class HomeController : Controller
@@ -20,6 +20,13 @@ namespace MVCCoreProject.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.Title = "Aruna";
+
+            dynamic data = new ExpandoObject();
+            data.Id = 1;
+            data.Name = "Aruna";
+            ViewBag.Data = data;
+            ViewBag.Book = new BookModel() { Language = "English" };
             return View();
         }
 

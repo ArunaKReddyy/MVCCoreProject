@@ -1,10 +1,12 @@
 ﻿@{
     Layout = "_Layout";
+    dynamic data = ViewBag.Data;
 }
-
 <div class="jumbotron text-center">
     <div class="container">
-        <h1>Book Store</h1>
+        <h1>Book Store @ViewBag.Title</h1>
+        <h1>@data.Id @data.Name</h1>
+        <h1>Language=@ViewBag.Book.Language</h1>
         <p class="lead text-muted">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. A repellat veniam
             adipisci consequatur ipsum fugiat ratione! Veritatis suscipit ipsum iure id?
