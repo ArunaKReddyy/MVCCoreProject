@@ -39,14 +39,20 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/home/AboutUs">AboutUS</a>
+                            @*<a class="nav-link text-dark" href="/home/AboutUs">AboutUS</a>*@
+                            <a class="nav-link text-dark" asp-action="AboutUS" asp-controller="Home">AboutUS</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/home/Privacy">Privacy</a>
+                            @*<a class="nav-link text-dark" href="/home/Privacy">Privacy</a>*@
+                            <a class="nav-link text-dark" asp-action="Privacy" asp-controller="Home">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Book/GetAllbooks">All Books</a>
+                            @*<a class="nav-link text-dark" href="/Book/GetAllbooks">All Books</a>*@
+                            <a class="nav-link text-dark" asp-action="GetAllbooks" asp-controller="Book">GetAllbooks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-protocol="http" asp-host="webgentle.com">HostLink</a>
                         </li>
                     </ul>
                 </div>
