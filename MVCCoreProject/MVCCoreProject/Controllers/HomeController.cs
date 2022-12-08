@@ -32,6 +32,8 @@ namespace MVCCoreProject.Controllers
 
         public IActionResult Privacy()
         {
+            ViewData["Title"] = "Aruna";
+            ViewData["data"] = new BookModel() { Id = 1, AuthorName = "ArunaKReddy" };
             return View();
         }
 

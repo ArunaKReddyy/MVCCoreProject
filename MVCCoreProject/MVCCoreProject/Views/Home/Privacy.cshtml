@@ -1,7 +1,9 @@
 ﻿@{
     Layout = "_Layout";
+    var data = ViewData["data"] as BookModel;
 }
 <h1>@ViewData["Title"]</h1>
+<h1>@data.AuthorName @data.Id</h1>
 
 <p>Use this page to detail your site's privacy policy.</p>
 
