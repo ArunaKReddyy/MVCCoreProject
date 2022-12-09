@@ -11,9 +11,9 @@ namespace MVCCoreProject.Controllers
     public class BookController : Controller
     {
         private readonly BookRepository _bookRepository;
-        public BookController()
+        public BookController(BookRepository bookRepository)
         {
-            _bookRepository = new BookRepository();
+            _bookRepository = bookRepository;
         }
         public IActionResult Index()
         {
@@ -35,6 +35,23 @@ namespace MVCCoreProject.Controllers
         {
             return _bookRepository.getBook(autorname,title);
 
+        }
+        [HttpGet]
+        public ViewResult AddBook( bool isSuccess=false,int bookid=0)
+        {
+            ViewBag.isSuccess = isSuccess;
+            ViewBag.BookId = bookid;
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddBook(BookModel model)
+        {
+            int id = _bookRepository.CreateBook(model);
+            if(id >0)
+            {
+                return RedirectToAction(nameof(AddBook) ,new { isSuccess=true,bookid=id});
+            }
+            return View();
         }
     }
 }

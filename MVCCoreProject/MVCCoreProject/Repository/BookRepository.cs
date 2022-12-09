@@ -1,4 +1,5 @@
-﻿using MVCCoreProject.Models;
+﻿using MVCCoreProject.Data;
+using MVCCoreProject.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,25 @@ namespace MVCCoreProject.Repository
 {
     public class BookRepository
     {
+
+        private readonly BookstoreContext _context =null;
+         public BookRepository(BookstoreContext context)
+        {
+            _context = context;
+        }
+        public int CreateBook(BookModel bookModel)
+        {
+            var newbook = new BookDataModel()
+            {
+                Title = bookModel.Title,
+                AuthorName = bookModel.AuthorName,
+                Description = bookModel.Description,
+                Totalpages = bookModel.Totalpages
+            };
+            _context.BookData.Add(newbook);
+            _context.SaveChanges();
+            return newbook.Id;
+        }
         public List<BookModel> getAllBooks()
         {
             return DataSource();
