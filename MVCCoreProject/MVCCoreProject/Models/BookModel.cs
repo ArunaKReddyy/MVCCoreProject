@@ -25,7 +25,7 @@ namespace MVCCoreProject.Models
 
         public List<string> MultiLanguage { get; set; }
 
-
+        public string LanguageEnum { get; set; }
         //[DataType(DataType.EmailAddress)]
         //[Display(Name ="EmailAddress")]
         //[EmailAddress]
