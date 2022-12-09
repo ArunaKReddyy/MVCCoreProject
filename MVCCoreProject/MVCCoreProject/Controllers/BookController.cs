@@ -54,7 +54,7 @@ namespace MVCCoreProject.Controllers
                     return RedirectToAction(nameof(AddBook), new { isSuccess = true, bookid = id });
                 }
             }
-            
+            ModelState.AddModelError("", "this is my custom error message");
             return View();
         }
     }
