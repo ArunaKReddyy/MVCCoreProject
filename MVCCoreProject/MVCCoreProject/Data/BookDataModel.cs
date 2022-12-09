@@ -15,5 +15,7 @@ namespace MVCCoreProject.Data
         public string Category { get; set; }
         public string Totalpages { get; set; }
         public string Language { get; set; }
+
+        public List<string> MultiLanguage { get; set; }
     }
 }

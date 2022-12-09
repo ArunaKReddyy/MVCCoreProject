@@ -23,6 +23,8 @@ namespace MVCCoreProject.Models
         public string Totalpages { get; set; }
         public string Language { get; set; }
 
+        public List<string> MultiLanguage { get; set; }
+
 
         //[DataType(DataType.EmailAddress)]
         //[Display(Name ="EmailAddress")]

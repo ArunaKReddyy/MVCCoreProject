@@ -47,17 +47,26 @@ namespace MVCCoreProject.Controllers
             //    Text = x.Text
             //});
 
-            var group1 = new SelectListGroup() { Name = "Group 1" };
-            var group2 = new SelectListGroup() { Name = "Group 2" };
-            var group3 = new SelectListGroup() { Name = "Group 3" };
+            //var group1 = new SelectListGroup() { Name = "Group 1" };
+            //var group2 = new SelectListGroup() { Name = "Group 2" };
+            //var group3 = new SelectListGroup() { Name = "Group 3" };
+            //ViewBag.LanguageList = new List<SelectListItem>()
+            //{
+            //    new SelectListItem(){Value="1", Text="English" ,Group=group1},
+            //    new SelectListItem(){Value="2", Text="Telugu",Group=group1},
+            //    new SelectListItem(){Value="3", Text="Hindhi",Group=group2},
+            //    new SelectListItem(){Value="4", Text="Tamil" ,Group=group2},
+            //    new SelectListItem(){Value="5", Text="Malayalam",Group=group3},
+            //    new SelectListItem(){Value="6", Text="Kannada",Group=group3},
+            //};
             ViewBag.LanguageList = new List<SelectListItem>()
             {
-                new SelectListItem(){Value="1", Text="English" ,Group=group1},
-                new SelectListItem(){Value="2", Text="Telugu",Group=group1},
-                new SelectListItem(){Value="3", Text="Hindhi",Group=group2},
-                new SelectListItem(){Value="4", Text="Tamil" ,Group=group2},
-                new SelectListItem(){Value="5", Text="Malayalam",Group=group3},
-                new SelectListItem(){Value="6", Text="Kannada",Group=group3},
+                new SelectListItem(){Value="1", Text="English" },
+                new SelectListItem(){Value="2", Text="Telugu"},
+                new SelectListItem(){Value="3", Text="Hindhi"},
+                new SelectListItem(){Value="4", Text="Tamil" },
+                new SelectListItem(){Value="5", Text="Malayalam"},
+                new SelectListItem(){Value="6", Text="Kannada"},
             };
             ViewBag.isSuccess = isSuccess;
             ViewBag.BookId = bookid;
@@ -80,6 +89,15 @@ namespace MVCCoreProject.Controllers
             //    Value = x.Id.ToString(),
             //    Text = x.Text
             //});
+            ViewBag.LanguageList = new List<SelectListItem>()
+            {
+                new SelectListItem(){Value="1", Text="English" },
+                new SelectListItem(){Value="2", Text="Telugu"},
+                new SelectListItem(){Value="3", Text="Hindhi"},
+                new SelectListItem(){Value="4", Text="Tamil" },
+                new SelectListItem(){Value="5", Text="Malayalam"},
+                new SelectListItem(){Value="6", Text="Kannada"},
+            };
             ModelState.AddModelError("", "this is my custom error message");
             return View();
         }
