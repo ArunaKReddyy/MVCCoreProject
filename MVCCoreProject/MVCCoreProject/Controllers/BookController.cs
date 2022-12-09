@@ -20,14 +20,14 @@ namespace MVCCoreProject.Controllers
             return View();
         }
 
-        public ViewResult GetAllBooks()
+        public async Task<ViewResult> GetAllBooks()
         {
-            var data=_bookRepository.getAllBooks();
+            var data= await _bookRepository.getAllBooks();
             return View(data);
         }
-        public ViewResult GetBook(int id)
+        public async Task<ViewResult> GetBook(int id)
         {
-            var data =_bookRepository.getBook(id);
+            var data =await _bookRepository.getBook(id);
             return View(data);
             
         }
@@ -46,11 +46,15 @@ namespace MVCCoreProject.Controllers
         [HttpPost]
         public async Task<IActionResult> AddBook(BookModel model)
         {
-            int id = await _bookRepository.CreateBook(model);
-            if(id >0)
+            if(ModelState.IsValid)
             {
-                return RedirectToAction(nameof(AddBook) ,new { isSuccess=true,bookid=id});
+                int id = await _bookRepository.CreateBook(model);
+                if (id > 0)
+                {
+                    return RedirectToAction(nameof(AddBook), new { isSuccess = true, bookid = id });
+                }
             }
+            
             return View();
         }
     }

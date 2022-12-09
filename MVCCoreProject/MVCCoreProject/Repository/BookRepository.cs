@@ -1,4 +1,5 @@
-﻿using MVCCoreProject.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using MVCCoreProject.Data;
 using MVCCoreProject.Models;
 using System;
 using System.Collections.Generic;
@@ -28,14 +29,46 @@ namespace MVCCoreProject.Repository
             await _context.SaveChangesAsync();
             return newbook.Id;
         }
-        public List<BookModel> getAllBooks()
+        public async Task<List<BookModel>> getAllBooks()
         {
-            return DataSource();
+            //return DataSource();
+
+            var allbooks = new List<BookModel>();
+            var data = await _context.BookData.ToListAsync();
+            if(data?.Any()==true)
+            {
+                foreach (var item in data)
+                {
+                    allbooks.Add(
+                        new BookModel()
+                        {
+                            Title = item.Title,
+                            AuthorName = item.AuthorName,
+                            Description = item.Description,
+                            Totalpages = item.Totalpages,
+                            Id=item.Id
+                        });
+                }
+            }
+            return allbooks;
         }
-        public BookModel getBook(int id)
+        public async Task<BookModel> getBook(int id)
         {
-            var book = DataSource().Where(x => x.Id == id).FirstOrDefault();
-            return book;
+            var allbooks = new BookModel();
+            var book = await _context.BookData.Where(x => x.Id == id).FirstOrDefaultAsync();
+            if(book !=null)
+            {
+                allbooks = (new BookModel()
+                {
+                    Title = book.Title,
+                    AuthorName = book.AuthorName,
+                    Description = book.Description,
+                    Totalpages = book.Totalpages,
+                    Id = book.Id
+                }); ;
+                return allbooks;
+            }
+            return null;
         }
         public List<BookModel> getBook(string author,string title)
         {
