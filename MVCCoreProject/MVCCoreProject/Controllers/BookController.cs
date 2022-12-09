@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MVCCoreProject.Models;
 using MVCCoreProject.Repository;
 using System;
@@ -39,6 +40,7 @@ namespace MVCCoreProject.Controllers
         [HttpGet]
         public ViewResult AddBook( bool isSuccess=false,int bookid=0)
         {
+            ViewBag.LanguageList = new SelectList(GetLanguages(),"Id", "Text");
             ViewBag.isSuccess = isSuccess;
             ViewBag.BookId = bookid;
             return View();
@@ -54,8 +56,21 @@ namespace MVCCoreProject.Controllers
                     return RedirectToAction(nameof(AddBook), new { isSuccess = true, bookid = id });
                 }
             }
+            ViewBag.LanguageList = new SelectList(GetLanguages(), "Id", "Text");
             ModelState.AddModelError("", "this is my custom error message");
             return View();
+        }
+
+        private List<LanguageModel> GetLanguages()
+        {
+            var languagelist = new List<LanguageModel>()
+            {
+                new LanguageModel(){Id=1,Text="English"},
+                 new LanguageModel(){Id=2,Text="Telugu"},
+                  new LanguageModel(){Id=3,Text="Hindhi"},
+                  new LanguageModel(){Id=4,Text="Kannada"},
+            };
+            return languagelist;
         }
     }
 }
