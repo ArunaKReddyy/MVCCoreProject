@@ -22,5 +22,12 @@ namespace MVCCoreProject.Models
         [Display(Name = "Total Number of pages")]
         public string Totalpages { get; set; }
         public string Language { get; set; }
+
+
+        [DataType(DataType.EmailAddress)]
+        [Display(Name ="EmailAddress")]
+        [EmailAddress]
+        [Required(ErrorMessage = "Enter Email Address")]
+        public string EmailAddress { get; set; }
     }
 }
