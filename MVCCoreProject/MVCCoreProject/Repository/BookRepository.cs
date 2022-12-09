@@ -15,7 +15,7 @@ namespace MVCCoreProject.Repository
         {
             _context = context;
         }
-        public int CreateBook(BookModel bookModel)
+        public async Task<int> CreateBook(BookModel bookModel)
         {
             var newbook = new BookDataModel()
             {
@@ -24,8 +24,8 @@ namespace MVCCoreProject.Repository
                 Description = bookModel.Description,
                 Totalpages = bookModel.Totalpages
             };
-            _context.BookData.Add(newbook);
-            _context.SaveChanges();
+            await _context.BookData.AddAsync(newbook);
+            await _context.SaveChangesAsync();
             return newbook.Id;
         }
         public List<BookModel> getAllBooks()

@@ -44,9 +44,9 @@ namespace MVCCoreProject.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddBook(BookModel model)
+        public async Task<IActionResult> AddBook(BookModel model)
         {
-            int id = _bookRepository.CreateBook(model);
+            int id = await _bookRepository.CreateBook(model);
             if(id >0)
             {
                 return RedirectToAction(nameof(AddBook) ,new { isSuccess=true,bookid=id});
