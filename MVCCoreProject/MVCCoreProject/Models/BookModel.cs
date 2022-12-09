@@ -24,10 +24,10 @@ namespace MVCCoreProject.Models
         public string Language { get; set; }
 
 
-        [DataType(DataType.EmailAddress)]
-        [Display(Name ="EmailAddress")]
-        [EmailAddress]
-        [Required(ErrorMessage = "Enter Email Address")]
-        public string EmailAddress { get; set; }
+        //[DataType(DataType.EmailAddress)]
+        //[Display(Name ="EmailAddress")]
+        //[EmailAddress]
+        //[Required(ErrorMessage = "Enter Email Address")]
+        //public string EmailAddress { get; set; }
     }
 }

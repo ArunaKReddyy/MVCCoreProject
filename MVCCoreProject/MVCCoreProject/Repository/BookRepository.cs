@@ -23,7 +23,8 @@ namespace MVCCoreProject.Repository
                 Title = bookModel.Title,
                 AuthorName = bookModel.AuthorName,
                 Description = bookModel.Description,
-                Totalpages = bookModel.Totalpages
+                Totalpages = bookModel.Totalpages,
+                Language=bookModel.Language
             };
             await _context.BookData.AddAsync(newbook);
             await _context.SaveChangesAsync();
@@ -46,6 +47,7 @@ namespace MVCCoreProject.Repository
                             AuthorName = item.AuthorName,
                             Description = item.Description,
                             Totalpages = item.Totalpages,
+                            Language=item.Language,
                             Id=item.Id
                         });
                 }
@@ -64,6 +66,7 @@ namespace MVCCoreProject.Repository
                     AuthorName = book.AuthorName,
                     Description = book.Description,
                     Totalpages = book.Totalpages,
+                    Language=book.Language,
                     Id = book.Id
                 }); ;
                 return allbooks;
